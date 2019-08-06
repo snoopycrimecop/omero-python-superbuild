@@ -29,7 +29,9 @@ pipeline {
                     # Workaround for "unflattened" file, possibly due to matrix
                     find . -name version.properties -exec cp {} . \\;
 
-                    touch version.properties
+                    echo versions.omero-blitz=5.5.3 >> version.properties
+                    echo versions.omero-common-test=5.5.2 >> version.properties
+                    echo versions.omero-gateway=5.5.3 >> version.properties
                     echo FIXME test -e version.properties
                     foreach-get-version-as-property >> version.properties
                 """
