@@ -1,0 +1,3 @@
+[submodule "omero-py"]
+	path = omero-py
+	url = git://github.com/ome/omero-py
