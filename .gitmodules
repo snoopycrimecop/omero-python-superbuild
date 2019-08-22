@@ -1,3 +1,9 @@
 [submodule "omero-py"]
 	path = omero-py
 	url = git://github.com/ome/omero-py
+[submodule "omero-web"]
+	path = omero-web
+	url = git://github.com/ome/omero-web
+[submodule "omero-marshal"]
+	path = omero-marshal
+	url = git://github.com/ome/omero-marshal
