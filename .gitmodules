@@ -7,3 +7,6 @@
 [submodule "omero-marshal"]
 	path = omero-marshal
 	url = git://github.com/ome/omero-marshal
+[submodule "omero-dropbox"]
+	path = omero-dropbox
+	url = git://github.com/ome/omero-dropbox
