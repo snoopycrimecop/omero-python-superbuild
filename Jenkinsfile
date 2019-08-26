@@ -40,9 +40,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Currently running on a build node with multiple jobs so incorrect jar may be cached
-                // (Moving to Docker should fix this)
-                sh 'echo gradle --init-script init-ci.gradle publishToMavenLocal --refresh-dependencies'
+                sh """
+                    cd omero-py
+                    python setup.py sdist
+                """
+                archiveArtifacts artifacts: 'omero-py/dist/omero-py-*'
             }
         }
         stage('Deploy') {
