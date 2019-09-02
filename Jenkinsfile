@@ -23,16 +23,13 @@ pipeline {
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
                     mkdir ${env.WORKSPACE}/build
-                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/joshmoore/build-infra/archive/python.tar.gz | tar -zxf -
-                    export PATH=$PATH:${env.WORKSPACE}/build/build-infra-python/
+                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/joshmoore/build-infra/archive/py-versions.tar.gz | tar -zxf -
+                    export PATH=$PATH:${env.WORKSPACE}/build/build-infra-py-versions/
                     cd ..
                     # Workaround for "unflattened" file, possibly due to matrix
                     find . -name version.properties -exec cp {} . \\;
 
-                    echo versions.omero-blitz=5.5.3 >> version.properties
-                    echo versions.omero-common-test=5.5.2 >> version.properties
-                    echo versions.omero-gateway=5.5.3 >> version.properties
-                    echo FIXME test -e version.properties
+                    test -e version.properties
                     foreach-get-version-as-property >> version.properties
                 """
                 archiveArtifacts artifacts: 'version.properties'
@@ -41,10 +38,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh """
-                    cd omero-py
-                    python setup.py sdist
+                    git submodule foreach python setup.py sdist
                 """
-                archiveArtifacts artifacts: 'omero-py/dist/omero-py-*'
+                archiveArtifacts artifacts: '*/dist/omero-*'
             }
         }
         stage('Deploy') {
