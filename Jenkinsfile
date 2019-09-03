@@ -40,7 +40,7 @@ pipeline {
                 sh """
                     git submodule foreach python setup.py sdist
                 """
-                archiveArtifacts artifacts: '*/dist/omero-*'
+                archiveArtifacts artifacts: '*/dist/*tar.gz'
             }
         }
         stage('Deploy') {
