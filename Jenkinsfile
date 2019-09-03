@@ -23,8 +23,8 @@ pipeline {
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
                     mkdir ${env.WORKSPACE}/build
-                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/joshmoore/build-infra/archive/py-versions.tar.gz | tar -zxf -
-                    export PATH=$PATH:${env.WORKSPACE}/build/build-infra-py-versions/
+                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -
+                    export PATH=$PATH:${env.WORKSPACE}/build/build-infra-master/
                     cd ..
                     # Workaround for "unflattened" file, possibly due to matrix
                     find . -name version.properties -exec cp {} . \\;
