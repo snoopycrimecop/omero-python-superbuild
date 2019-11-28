@@ -1,5 +1,5 @@
 base-branch: master
 
 submodules:
-  scripts:
+  omero-scripts:
     base-branch: develop

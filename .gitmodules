@@ -10,6 +10,6 @@
 [submodule "omero-dropbox"]
 	path = omero-dropbox
 	url = git://github.com/ome/omero-dropbox
-[submodule "scripts"]
-	path = scripts
-	url = git://github.com/ome/scripts
+[submodule "omero-scripts"]
+	path = omero-scripts
+	url = git://github.com/ome/omero-scripts
