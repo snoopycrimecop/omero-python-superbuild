@@ -1,15 +1,15 @@
 [submodule "omero-py"]
 	path = omero-py
-	url = git://github.com/ome/omero-py
+	url = https://github.com/ome/omero-py
 [submodule "omero-web"]
 	path = omero-web
-	url = git://github.com/ome/omero-web
+	url = https://github.com/ome/omero-web
 [submodule "omero-marshal"]
 	path = omero-marshal
-	url = git://github.com/ome/omero-marshal
+	url = https://github.com/ome/omero-marshal
 [submodule "omero-dropbox"]
 	path = omero-dropbox
-	url = git://github.com/ome/omero-dropbox
+	url = https://github.com/ome/omero-dropbox
 [submodule "omero-scripts"]
 	path = omero-scripts
-	url = git://github.com/ome/omero-scripts
+	url = https://github.com/ome/omero-scripts
