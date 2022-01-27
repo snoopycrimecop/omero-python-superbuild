@@ -32,6 +32,7 @@ pipeline {
                     test -e version.properties
                     # First download of omero-blitz happens here
                     export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
+                    export ZIP_FILE=${env.WORKSPACE}/omero-blitz-VERSION-python.zip
                     foreach-get-version-as-property >> version.properties
                 """
                 archiveArtifacts artifacts: 'version.properties'
@@ -41,6 +42,7 @@ pipeline {
             steps {
                 sh """
                     export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
+                    export ZIP_FILE=${env.WORKSPACE}/omero-blitz-VERSION-python.zip
                     git submodule foreach python setup.py sdist
                 """
                 archiveArtifacts artifacts: '*/dist/*tar.gz'
