@@ -18,7 +18,7 @@ pipeline {
             steps {
 
                 // Currently disabled. Eventually, this should copy the blitz python zip
-                copyArtifacts(projectName: 'OMERO-build-build', flatten: true, filter: 'version.properties')
+                copyArtifacts(projectName: 'OMERO-build-build', flatten: true)
 
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
