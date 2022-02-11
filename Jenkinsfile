@@ -41,6 +41,7 @@ pipeline {
             steps {
                 sh """
                     export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
+                    # VERSION will be in omero-py/setup.py
                     export ZIP_FILE=${env.WORKSPACE}/omero-blitz-VERSION-python.zip
                     git submodule update --init --recursive
                     git submodule foreach python setup.py sdist
