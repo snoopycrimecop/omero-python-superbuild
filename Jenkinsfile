@@ -17,8 +17,7 @@ pipeline {
         stage('Versions') {
             steps {
 
-                // Currently disabled. Eventually, this should copy the blitz python zip
-                copyArtifacts(projectName: 'OMERO-build-build', flatten: true, filter: 'version.properties')
+                copyArtifacts(projectName: 'OMERO-build-build', flatten: true)
 
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
@@ -32,6 +31,7 @@ pipeline {
                     test -e version.properties
                     # First download of omero-blitz happens here
                     export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
+                    export ZIP_FILE=${env.WORKSPACE}/omero-blitz-VERSION-python.zip
                     foreach-get-version-as-property >> version.properties
                 """
                 archiveArtifacts artifacts: 'version.properties'
@@ -41,6 +41,9 @@ pipeline {
             steps {
                 sh """
                     export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
+                    # VERSION will be in omero-py/setup.py
+                    export ZIP_FILE=${env.WORKSPACE}/omero-blitz-VERSION-python.zip
+                    git submodule update --init --recursive
                     git submodule foreach python setup.py sdist
                 """
                 archiveArtifacts artifacts: '*/dist/*tar.gz'
